@@ -1,16 +1,8 @@
-// =====================================================================
-// ⚙️ CONFIGURAÇÕES PRINCIPAIS (Altere apenas os valores aqui)
-// =====================================================================
-
 const CONFIG = {
-    // ⏱️ Tempo de Delay: Formato "Minutos:Segundos"
-    // Exemplo: "48:55", "12:00" ou "00:15"
     tempoDeDelay: "23:33",
-
-    // 🔗 Links de Checkout dos Botões (Men Balance Pro)
-    linkPote2: "https://travozilla.com/b?p=MBP2V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=2b&aff_id=122671&subid={subid}",
-    linkPote6: "https://travozilla.com/b?p=MBP6V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=6b&aff_id=122671&subid={subid}",
-    linkPote3: "https://travozilla.com/b?p=MBP3V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=3b&aff_id=122671&subid={subid}"
+    linkPote2: "https://travozilla.com/b?p=MBP2V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=2b&aff_id=122671",
+    linkPote6: "https://travozilla.com/b?p=MBP6V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=6b&aff_id=122671",
+    linkPote3: "https://travozilla.com/b?p=MBP3V1&nc=1&preview=1&b=123&fid=268&fnid=72&pfnid=1&pg=9207&template=3b&aff_id=122671"
 };
 
 // =====================================================================
@@ -33,14 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return totalSegundos * 1000;
     }
 
-    // O QUE ESTÁ AQUI DENTRO SÓ ACONTECE APÓS O TEMPO DO DELAY
     setTimeout(() => {
-        // A. Revela a área com os botões e garantia
         document.querySelector('.video-cta-container').style.display = 'block';
-
-        // B. Inicia os pop-ups de vendas falsas apenas agora!
         startAllNotifications();
-
     }, calcularDelayEmMilissegundos(CONFIG.tempoDeDelay));
 
 
@@ -89,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     purchaseNotification.classList.remove('show');
                     purchaseNotification.classList.add('hide');
                     setTimeout(() => purchaseNotification.classList.remove('hide'), 500);
-                }, 10000); // Fica na tela por 10 segundos
+                }, 10000);
             }, 500);
         }
 
@@ -97,10 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
                 showNotification();
                 startRandomInterval();
-            }, Math.random() * (30000 - 10000) + 11000); // Próximas demoram entre 11s e 30s
+            }, Math.random() * (30000 - 10000) + 11000);
         }
 
-        // Mostra a primeira notificação 2 segundos APÓS os botões aparecerem
         setTimeout(() => {
             showNotification();
             startRandomInterval();
